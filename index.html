@@ -1,32 +1,22 @@
 <!DOCTYPE html>
-<!-- 
-=====================================================================
-                    SECRET CODE - GIOCO MASTERMIND
-                  Sviluppato da: Daniele
-                 
-  Questo file HTML contiene l'interfaccia completa del gioco Secret Code,
-  un classico gioco di logica ispirato a Mastermind. Il gioco richiede
-  al giocatore di indovinare un codice segreto di 4 colori in 10 tentativi.
-  
-  Caratteristiche principali:
-  - Interfaccia responsive e moderna
-  - Sistema di feedback visivo con peg neri e bianchi
-  - Design intuitivo con selezione colori
-  - Modal di fine gioco con rivelazione del codice
-  
-=====================================================================
--->
 <html lang="it">
 <head>
-    <!-- 
-    Meta tag per la configurazione della pagina
-    charset: UTF-8 per supportare caratteri speciali italiani
-    viewport: ottimizzazione per dispositivi mobili
-    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Titolo del gioco -->
     <title>Secret Code</title>
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#333333">
+    
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('Service Worker registrato!', reg))
+            .catch(err => console.log('Errore Service Worker:', err));
+        });
+      }
+    </script>
     <style>
         body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; display: flex; flex-direction: column; align-items: center; padding: 20px; user-select: none; }
         h1 { color: #333; margin-bottom: 20px; }
